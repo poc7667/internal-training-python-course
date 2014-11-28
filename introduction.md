@@ -1,6 +1,16 @@
 # Python 1o1 - Introduction
 ---
 
+# Preface
+
+原本這門課是要用來訓練 team 內的兩位研發替代役新人
+
+不過既然都要上課，那就乾脆把課程 open 給部門的人一起參加
+
+希望 member 能從這堂課帶走東西，運用在自己的工作以及生活上。
+
+---
+
 # Why Learning Programing
 
 ## 為什麼要學程式 (21世紀)
@@ -24,7 +34,6 @@
 	* US	$76,000
 	* Taiwan $24,000
 	* China $23,100
-
 	
 ---
 
@@ -70,15 +79,23 @@
 ---
 
 
-# Demo
-
-* 有個女性好友，在工作上常常需要我的幫忙
-* 他常跟我抱怨他需要執行一些很無腦無聊的 Excel 整理工作
-* 機會來了 :smile:
-
+# Result
+![](http://rd1-1/rd1wiki/images/0/00/Screenshot_11_28_14_2_00_PM.png)
 
 ---
 
+# Demo
+
+* 有個女性好友，在工作上
+* 他常跟我抱怨他需要執行一些很無腦無聊的 Excel 整理工作
+
+---
+
+
+#  機會來了 :smile:
+![](http://rd1-1/rd1wiki/images/c/c9/EweScreenshot_11_28_14_2_02_PM.png)
+
+---
 
 # Demo
 
@@ -88,7 +105,21 @@
 
 ---
 
-# Schedule
+# html
+
+![](http://rd1-1/rd1wiki/images/8/86/Screenshot_11_28_14_2_05_PM.png)
+
+
+---
+
+
+# CDF.xml
+
+![](http://rd1-1/rd1wiki/images/6/60/Screenshot_11_28_14_2_06_PM.png)
+
+---
+
+# Schedule Part 1
 
 * Environment setting, basic control flow, basic input and output
 	* 環境設定安裝，基本控制流程，IO 介紹
@@ -99,7 +130,7 @@
 
 ---
 
-# Schedule
+# Schedule Part 2
 * Basic File input and output
 	* 基本檔案輸出入 (讀取檔案，輸出檔案)
 	* 以 Firmware release history 作為範例
@@ -110,7 +141,7 @@
 
 ---
 
-# Schedule
+# Schedule Part 3
 * Regular expression
 	* 萬用的正規表示式
 * Organize your code (import, module, method)
@@ -120,7 +151,7 @@
 
 ---
 
-# Schedule	
+# Schedule	Part 4
 
 * Excel operation (Read/Write)
 	* 讀寫 大量 Excel file
@@ -131,19 +162,27 @@
 
 ---
 
-# Objectives
-
-* 提昇工作效率
-* 不做冗長乏味重複性的工作
-* 做出對自己生活或者工作上有幫助的事情
-
----
 
 # 這門課該怎麼參加
 
 * 上課可以只帶紙筆，有沒有筆記型電腦都無所謂
 * 上課時間盡量會控制在 40 分鐘左右結束
-* 作業要完成
+	* 害怕問問題的人，可以
+* 作業要完成，盡量上討論區論壇發問
 * 記得思考生活周遭有什麼事情可以利用程式提昇效率
+	* [g0v 臨時政府](http://g0v.tw/en-US/index.html)
+	* Open data
+		* FAE
+		* Sales
+
+---
+
+# Objectives
+
+* 提昇工作效率
+* 不做冗長乏味重複性的工作
+* 做出對自己生活或者工作上有幫助的事情
+* 你有很大的機會還是不會變成專職的程式設計師
+	* 但是有很大的機會變成你領域裡最會寫程式的人 :+1:
 
 ---
