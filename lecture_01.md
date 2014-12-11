@@ -50,6 +50,7 @@
 - 注意一下該檔案是否有以下的內容即可
 
 ```bash 
+
     // The number of spaces a tab is considered equal to
     "tab_size": 4,
 
@@ -108,6 +109,7 @@ print 19870607
 - 建立一個檔案叫做 sample.py (注意附檔名，有的 Windows 會隱藏附檔名)
 
 ```bash
+
 #執行你剛剛寫好的程式
 python sample.py
 ```
@@ -120,6 +122,7 @@ python sample.py
 	-  食物在處理的時候，也要有暫時存放的地方 e.g. 鍋子
 
 ```Python
+
 #int a = 3 ;
 #a=3
 a = 3
@@ -145,6 +148,7 @@ a = 3
 # Output
 
 ```Python
+
 print("Hello Poc!")
 ```
 
@@ -156,6 +160,7 @@ print("Hello Poc!")
 	- python sample.py 1987 06 07
 	
 ```python
+
 import sys # 去烙人的意思，把 sys 這個人 call 過來 專門負責處理 sys 相關的事情
 sys
 print(sys.argv)
@@ -170,15 +175,18 @@ print(sys.argv[1])
 	- please user `raw_input()`
 
 ```Python
+
 name = raw_input("Please enter your name:")
 ```
-	In Python 2.x, input() expects something which is a Python expression
+	
+In Python 2.x, input() expects something which is a Python expression
 	
 ---
 
 # Conditional Expression - if
 
 ```python
+
 name = raw_input("Which is the best company?")
 if name=="VIVOTEK":
 	print("yes")
@@ -190,6 +198,7 @@ if name=="VIVOTEK":
 # Conditional Expression - if - else
 
 ```python
+
 if name=="VIVOTEK":
 	print("yes")
 else:
@@ -225,6 +234,7 @@ while name!="VIVOTEK ":
 # Assigments - BMI
 
 ```
+
 > 請輸入你的體重: 60
 > 請輸入你的身高(公分): 171
 
