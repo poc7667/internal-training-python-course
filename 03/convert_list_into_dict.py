@@ -1,10 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import pdb
-import uniout
-from pprint import pprint
-import random
-vvtk_name_list =[
+vvtk_staffs =[
     ["稽核室","A00699","黃莉婷",],
     ["董事長室","A00001","陳文昌",],
     ["董事長室","A00003","藍志忠",],
@@ -1249,16 +1245,16 @@ vvtk_name_list =[
     ["應用技術組","A01142","邱士恆",]
 ]
 
-name_in_groups = {}
+staff_group = {}
 
-for name in vvtk_name_list:
-#name[0] = "應用技術組"
-    if name[0] not in name_in_groups:
-#新增一組 KEY VALUE
-        name_in_groups[name[0]] = [name[1:]]
-       # name[1:] = ["A01142", "秋是橫"]
+for name in vvtk_staffs:
+    #name =  ["應用技術組","A01142","邱士恆",]
+    #name[0] = "應用技術組"
+    if name[0] not in staff_group:
+        #新增一組 KEY VALUE
+        staff_group[name[0]] = [name[1:]]
+        # name[1:] = [A01142","邱士恆",]
     else:
-        name_in_groups[name[0]].append(name[1:])
+        staff_group[name[0]].append(name[1:])
 
-print name_in_groups
-pprint(name_in_groups)
+print(staff_group)
