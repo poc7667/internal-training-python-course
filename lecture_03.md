@@ -250,14 +250,20 @@ len(vvtk_department["DQA"])
 # Background for assigments
 
 - 如何把工號轉成數字?
-- 'A00354'
-- [1:]
+
+
+```python
+
+number='A00354'
+int(number[1:])
+```
+
 
 ---
 
 
 # Assigments - 尾牙抽獎機
-- 作業檔名 `03_vvtk_members_drawer.py`
+- 建議檔名 `03_vvtk_members_drawer.py`
 - 從公司隨機抽樣出 10 個員工出來
 
 ---
@@ -265,7 +271,8 @@ len(vvtk_department["DQA"])
 
 # Assigments - 各部門人數統計 (dictionary)
 - 檔名 `03_vvtk_numbers_of_department.py`
-- 統計出公司各單位的人數
+- 統計出公司各單位的人數, 直接輸出下面格式即可
+	- 進階的同學可以提供使用者輸入介面，讓使用者輸入"組別"，然後查詢結果
 - Output(輸出範例)
 	- 驗證五組: 10 人
 	- 製造組: 30 人
@@ -285,7 +292,8 @@ len(vvtk_department["DQA"])
 
 # Assigments - How old Are you 
 - 檔名 `03_vvtk_how_old_i_am.py`
-- 統計出全公司每個人的年資排名，以及找出你自己的順位
+- 統計出全公司每個人的年資排名
+- 進階：提供讓使用者輸入介面
 - Output(輸出範例)
 	- 1 陳文昌
 	- 2 藍志忠
@@ -295,9 +303,7 @@ len(vvtk_department["DQA"])
 ---
 
 
-
 # Referece
-
 - http://larc.ee.nthu.edu.tw/~jcyeh/python/cdoc/tut/tut.html
 - http://dowell.colorado.edu/education-python.html
 ---
