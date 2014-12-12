@@ -1252,11 +1252,13 @@ vvtk_name_list =[
 name_in_groups = {}
 
 for name in vvtk_name_list:
+#name[0] = "應用技術組"
     if name[0] not in name_in_groups:
+#新增一組 KEY VALUE
         name_in_groups[name[0]] = [name[1:]]
+       # name[1:] = ["A01142", "秋是橫"]
     else:
         name_in_groups[name[0]].append(name[1:])
 
 print name_in_groups
 pprint(name_in_groups)
-pdb.set_trace()

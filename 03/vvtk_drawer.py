@@ -1246,5 +1246,3 @@ vvtk_name_list =[
     ["應用技術組","A01142","邱士恆",]
 ]
 
-for goat in range(10):
-    print random.choice(vvtk_name_list)[-1]
