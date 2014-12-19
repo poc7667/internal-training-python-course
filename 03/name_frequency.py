@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-vvtk_staffs =[
+from pprint import pprint
+import uniout
+import pdb
+raw_name_list =[
     ["稽核室","A00699","黃莉婷",],
     ["董事長室","A00001","陳文昌",],
     ["董事長室","A00003","藍志忠",],
@@ -1245,17 +1248,40 @@ vvtk_staffs =[
     ["應用技術組","A01142","邱士恆",]
 ]
 
-staff_group = {}
+staffs = {}
+override_counter = 0
 
-for name in vvtk_staffs:
-    #name =  ["應用技術組","A01142","邱士恆",]
-    #name[0] = "應用技術組"
-    if name[0] not in staff_group:
-        #新增一組 KEY VALUE
-        staff_group[name[0]] = [name[1:]]
-        # name[1:] = [A01142","邱士恆",]
+for name in raw_name_list:
+    key = name[-1]
+    value = { "group": name[0], "id": name[1] }
+    if key in staffs:
+        override_counter += 1
+        print("{2}:{0} overrided by {1}".format(
+            staffs[key], name, key))
+    staffs[key] = value
 
+print("overrided {0} times".format(override_counter))
+
+staffs_by_family_name = {}
+
+for name in staffs.keys():
+    family_name = name.decode('utf-8')[0:1].encode('utf-8')
+    pdb.set_trace()
+    staff = {"name": name, "value": staffs[name]}
+    if family_name in staffs_by_family_name:
+        staffs_by_family_name[family_name].append(staff)
     else:
-        staff_group[name[0]].append(name[1:])
+        staffs_by_family_name[family_name] = [staff]
 
-print(staff_group)
+# for staff in staffs:
+#     key =
+#     if staff[key] not in staffs_by_family_name
+for k,v in staffs_by_family_name.items():
+    print("{0} frequency: {1}".format(k, len(v)))
+    print(v)
+
+while True:
+    family_name = raw_input(">> your family name:")
+    print(family_name)
+    print("{0} frequency: {1}".format(family_name, len(staffs_by_family_name[family_name])))
+    pprint(staffs_by_family_name[family_name])
