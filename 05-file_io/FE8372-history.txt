@@ -1,0 +1,2546 @@
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200h>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200h>
+File: <FD8372-VVTK-0200h.flash.pkg>
+Start Date: <2013/12/02>
+Release Date: <2013/12/05>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200h>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200h>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.88> *  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.106> * 
+VNDPWrapper:                    <1.0.0.69> *  
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372,380,382-383,387,392>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.5>	
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.3>	
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.4>	 
+RTSP Server Module Version:	<2.5.4.6>		
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.10>	   
+stormgr:   			<1.0.7.7> *	 
+ONVIFD_VERSION:			<1.7.1.3>   
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.21> * 
+MOD version                 <1.0.1.17-1> * 
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,106 *  
+FF_VER:           1,0,0,88 *    
+VNDPWRAPPER_VER:  1,0,0,69 *           
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:	
+    1) Update mod to 1.0.1.17-1
+	2) Update stormgr to 1.0.7.7
+	3) Update remotefocusd 1.0.0.21(modify the getstatus content cgi parameter, please see the note)
+	4) Update remotefocusd UI (remove focus scan gradient draw bar, add large/small(5/1) step )
+	5) Remove unsupported ddns server
+	6) fix some potential bug in video mode while switching fov and comsfrequency
+	7) Update plugin to 1.0.0.106
+	
+3. Libraries change:
+    <None>
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+	4)  14670	P3 Maj	搭配 VAST，Camera codec 選 JPEG 時，seamless recording 功能失效Won't fix
+    
+5. Bugs fixed:
+     1) 14669	P3 Maj	搭配 VAST 測試 seamless recording 功能，回補檔案有機會不完整Tracking
+     2) 14488	P3 Maj	Enable cyclic storage 搭配測試seamless recording功能，回補檔案有機會不完整Tracking
+     3) 14487	P2 Maj	搭配 VAST 測試 seamless recording 功能，有機會沒有作用Tracking
+     4) 14489	P3 Nor	設置密碼後，上傳config檔，無法正常顯示上傳成功的視窗fixed
+     5) 9199 	P4 Nor	The UI of Auto Focus is incorrect after specific steps
+	
+6. Bugs unfixed:
+    1 ) 14662	P2  Maj Genetec系統裡，Audio Output功能無作用。(尚未導入)
+	2 ) 14911	P3  Nor	DI連續觸發約55次左右後，影像會同時進行auto focus        
+	3 ) 24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	4 ) 24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	5 ) 16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	6 ) 24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile 
+    7 ) 25141   nor	P3  設置密碼後，上傳config檔，無法正常顯示上傳成功的視窗	
+	8 ) 24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	9 ) 25072	sug P3	建議 ePTZ zoom time factor 最大值與 SPEC 相符
+	10) 25067	sug P3	建議改善 Format SD card 後 VADP 數量遞減狀況
+	11) 24757	unc P3	測試期間發生過image頁面的設定會變空值
+	12) 14671	P4  Nor	在View Information頁面中不應該可同時新增兩個一樣的IP至Denied list中
+	13)  9199 	P4  Nor	The UI of Auto Focus is incorrect after specific steps
+	14) 24738	nor P4	使用Safari browser，需輸入3次帳密才可登入	
+	15) 24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	16) 25064	nor P4	特殊設定使得 Resize button 看起來行為異常	
+	17) 25059	nor P4	特定的設定會導致Home Page的Snapshot/Digital zoom/Full Screen功能失效
+	18) 18934	min P4	Window names in Event page are incorrect when window name with "%"
+	19) 18923	min P4	Exclusive window will become gray after specific steps
+	20) 17723	min P4	video page中的save buttom有時會無法存取成功
+	21) 24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	22) 24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	23) 25049	sug P4	建議定義 Home Page talk 靜音 button
+	24) 16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+	FD8372-VVTK-0200g未正式進測，僅測試Seamless recording
+	The followings are remotefocusd getstatus parameters :
+    (http://<ip address>/cgi-bin/admin/remotefocus.cgi?function=getstatus )	
+	remote_focus_zoom_motor_max=<integer>    // total available zoom steps
+	remote_focus_focus_motor_max=<integer>   // total available focus steps
+	remote_focus_zoom_motor_start=<integer>  // current reasonable zoom start (e.g., 避外罩)
+	remote_focus_zoom_motor_end=<integer>    // current reasonable zoom end
+	remote_focus_focus_motor_start=<integer> // current reasonable focus start (may be determined by zoom)
+	remote_focus_focus_motor_end=<integer>   // current reasonable focus end (may be determined by zoom)
+	remote_focus_zoom_motor=<integer>        // current zoom motor position
+	remote_focus_focus_motor=<integer>       // current focus motor position
+	remote_focus_zoom_enable=<integer>       // current zoom function type (zoom/idle/etc)
+	remote_focus_focus_enable=<integer>      // current focus function type (auto focus/idle/etc) 
+	--------------------------------------------------------------------------------------------------------
+	Sync common bug 383 (related files : formatSD.cgi)
+	Sync common bug 392 (related files : mdev_localstorage
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200g>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200g>
+File: <FD8372-VVTK-0200g.flash.pkg>
+Start Date: <2013/10/25>
+Release Date: <2013/11/12>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200g>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200g>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.87>	  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.104> 
+VNDPWrapper:                    <1.0.0.68>  
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372,380,382,387>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.5>	
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.3>	
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.4>	 
+RTSP Server Module Version:	<2.5.4.6>		
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.10>	   
+stormgr:   			<1.0.6.4>	 
+ONVIFD_VERSION:			<1.7.1.3>   
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.20> 
+MOD version                 <1.0.1.5>* Patch mod 1.0.1.9 & 1.0.1.11	  (See the note)	
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,104  
+FF_VER:           1,0,0,87    
+VNDPWRAPPER_VER:  1,0,0,68     
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:	
+    1) Patch mod for fixing bugs
+	2) fix some potential bug in video mode while switching fov and comsfrequency
+	
+3. Libraries change:
+    <None>
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+	4)  14670	P3 Maj	搭配 VAST，Camera codec 選 JPEG 時，seamless recording 功能失效Won't fix
+    
+5. Bugs fixed:
+     1) 14669	P3 Maj	搭配 VAST 測試 seamless recording 功能，回補檔案有機會不完整Tracking
+     2) 14488	P3 Maj	Enable cyclic storage 搭配測試seamless recording功能，回補檔案有機會不完整Tracking
+     3) 14487	P2 Maj	搭配 VAST 測試 seamless recording 功能，有機會沒有作用Tracking
+     4) 14489	P3 Nor	設置密碼後，上傳config檔，無法正常顯示上傳成功的視窗fixed
+
+	
+6. Bugs unfixed:
+    1 ) 14662	P2  Maj Genetec系統裡，Audio Output功能無作用。(尚未導入)
+	2 ) 14911	P3  Nor	DI連續觸發約55次左右後，影像會同時進行auto focus        
+	3 ) 24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	4 ) 24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	5 ) 16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	6 ) 24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile 
+    7 ) 25141   nor	P3  設置密碼後，上傳config檔，無法正常顯示上傳成功的視窗	
+	8 ) 24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	9 ) 25072	sug P3	建議 ePTZ zoom time factor 最大值與 SPEC 相符
+	10) 25067	sug P3	建議改善 Format SD card 後 VADP 數量遞減狀況
+	11) 24757	unc P3	測試期間發生過image頁面的設定會變空值
+	12) 14671	P4  Nor	在View Information頁面中不應該可同時新增兩個一樣的IP至Denied list中
+	13)  9199 	P4  Nor	The UI of Auto Focus is incorrect after specific steps
+	14) 24738	nor P4	使用Safari browser，需輸入3次帳密才可登入	
+	15) 24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	16) 25064	nor P4	特殊設定使得 Resize button 看起來行為異常	
+	17) 25059	nor P4	特定的設定會導致Home Page的Snapshot/Digital zoom/Full Screen功能失效
+	18) 18934	min P4	Window names in Event page are incorrect when window name with "%"
+	19) 18923	min P4	Exclusive window will become gray after specific steps
+	20) 17723	min P4	video page中的save buttom有時會無法存取成功
+	21) 24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	22) 24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	23) 25049	sug P4	建議定義 Home Page talk 靜音 button
+	24) 16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+   mod patch 1.0.1.9 (fix the bug VAST can't catch the seamless recording stream while the timeshift stream is not s0)
+   mod patch 1.0.1.11 (add paprameter capability_localstorage_modversion for mod version check )
+   
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200f>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200f>
+File: <FD8372-VVTK-0200f.flash.pkg>
+Start Date: <2013/08/30>
+Release Date: <2013/09/06>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200f>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200f>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.87>	  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.104> 
+VNDPWrapper:                    <1.0.0.68>  
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372,380,382,387>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.5>	*
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.3>	*
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.4>	* 
+RTSP Server Module Version:	<2.5.4.6>	*	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.10>	*   
+stormgr:   			<1.0.6.4>	* 
+ONVIFD_VERSION:			<1.7.1.3>   *
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.20> 
+MOD version                 <1.0.1.5>	*
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,104  
+FF_VER:           1,0,0,87    
+VNDPWRAPPER_VER:  1,0,0,68     
+
+-----------------------------------------------------------------------
+1. New features:
+	1) Seamless recording (for only one stream) and Genetec video trickling
+	
+2. Changed features:	
+	1) eptz function refine (prevent from double free cause problem)
+	2) Russia change time zone and cancel DST (common bug 382)	
+	3) Automatic file system repair upgrade (related files :dosfsck、mdev_localstorage、mkdosfs、formatSD.cgi)	
+	
+3. Libraries change:
+    1) Update Onvif message to 1.7.1.3
+	2) Update mod to 1.0.1.5
+	3) Update reocrder to 1.0.6.10
+	4) Update session manager to 2.1.0.3
+	5) Update ISOM_h264 library to 3.6.1.5
+	6) Update common library
+	7) Update Streaming Server App to 1.3.2.4
+    8) Update RTSP Server Module to 2.5.4.6 (Common bug 387)
+	9) Update stormgr to 1.0.6.4
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+    
+5. Bugs fixed:
+    1 ) 25163	maj P2	Genetec中，Motion 無法被正常trigger
+	
+6. Bugs unfixed:
+	1 ) 24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	2 ) 24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	3 ) 16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	4 ) 24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile 
+    5 ) 25141   nor	P3  設置密碼後，上傳config檔，無法正常顯示上傳成功的視窗	
+	6 ) 24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	7 ) 25072	sug P3	建議 ePTZ zoom time factor 最大值與 SPEC 相符
+	8 ) 25067	sug P3	建議改善 Format SD card 後 VADP 數量遞減狀況
+	9 ) 24757	unc P3	測試期間發生過image頁面的設定會變空值
+	10) 24738	nor P4	使用Safari browser，需輸入3次帳密才可登入
+	11) 18985	nor P4	The UI of Auto Focus is incorrect after specific steps
+	12) 24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	13) 25064	nor P4	特殊設定使得 Resize button 看起來行為異常	
+	14) 25059	nor P4	特定的設定會導致Home Page的Snapshot/Digital zoom/Full Screen功能失效
+	15) 18934	min P4	Window names in Event page are incorrect when window name with "%"
+	16) 18923	min P4	Exclusive window will become gray after specific steps
+	17) 17723	min P4	video page中的save buttom有時會無法存取成功
+	18) 24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	19) 24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	20) 25049	sug P4	建議定義 Home Page talk 靜音 button
+	21) 16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+   5M的seamless recording僅支援一個stream，可接受錄影中斷前回補秒數過少之問題(與PM達成協議)
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200e>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200e>
+File: <FD8372-VVTK-0200e.flash.pkg>
+Start Date: <2013/08/08>
+Release Date: <2013/08/12>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200e>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200e>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.87>	  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.104> 
+VNDPWrapper:                    <1.0.0.68>  
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372,380>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.2> 
+RTSP Server Module Version:	<2.5.4.3>	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+stormgr:   			<1.0.6.2>  
+ONVIFD_VERSION:			<1.7.1.1> 
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.20> *
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,104  
+FF_VER:           1,0,0,87    
+VNDPWRAPPER_VER:  1,0,0,68     
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:	
+	1) Update remotefocusd to v1.0.0.20
+	2) Add remotefocusd mapping table for FD8372	
+	3) Update ubl to v2.0.1.1 (common bug #380)	
+	
+3. Libraries change:
+    <None>
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+    
+5. Bugs fixed:
+	1 ) 25045	maj P2	Reboot 後, 新增的 user account 會消失
+	2 )	19604	nor P3	VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0') 
+	3 )	19153	nor P3	The feature of exposure will works incorrect after specific steps  
+	4 )	19152	nor P3	In schedule mode, AWB will works incorrect if enable fix current value  
+	5 )	19923	nor P3	Restore camera 導致 stream2 Frame size 與 SPEC 不符
+	6 ) 25061	nor P4	Browser特定大小下到Local storage page view file，按primary後Close再按view會沒有作用
+	
+6. Bugs unfixed:
+	1 ) 24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	2 ) 24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	3 ) 16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	4 ) 24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile    
+	5 ) 24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	6 ) 25072	sug P3	建議 ePTZ zoom time factor 最大值與 SPEC 相符
+	7 ) 25067	sug P3	建議改善 Format SD card 後 VADP 數量遞減狀況
+	8 ) 24757	unc P3	測試期間發生過image頁面的設定會變空值
+	9 ) 24738	nor P4	使用Safari browser，需輸入3次帳密才可登入
+	10) 18985	nor P4	The UI of Auto Focus is incorrect after specific steps
+	11) 24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	12) 25064	nor P4	特殊設定使得 Resize button 看起來行為異常	
+	13) 25059	nor P4	特定的設定會導致Home Page的Snapshot/Digital zoom/Full Screen功能失效
+	14) 18934	min P4	Window names in Event page are incorrect when window name with "%"
+	15) 18923	min P4	Exclusive window will become gray after specific steps
+	16) 17723	min P4	video page中的save buttom有時會無法存取成功
+	17) 24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	18) 24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	19) 25049	sug P4	建議定義 Home Page talk 靜音 button
+	20) 16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+   <None>
+
+###################################################################################################
+Name: <FD8372-VVTK firmware 0200d>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200d>
+File: <FD8372-VVTK-0200d.flash.pkg>
+Start Date: <2013/08/01>
+Release Date: <2013/08/07>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200d>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200d>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.87>	  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.104> 
+VNDPWrapper:                    <1.0.0.68>  
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372,380>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.2> 
+RTSP Server Module Version:	<2.5.4.3>	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+stormgr:   			<1.0.6.2>  
+ONVIFD_VERSION:			<1.7.1.1> 
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.20> *
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,104  
+FF_VER:           1,0,0,87    
+VNDPWRAPPER_VER:  1,0,0,68     
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:	
+	1) Update remotefocusd to v1.0.0.20
+	2) Add remotefocusd mapping table for FD8372	
+	3) Update ubl to v2.0.1.1 (common bug #380)
+	
+3. Libraries change:
+    <None>
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+    
+5. Bugs fixed:
+	1 ) 25045	maj P2	Reboot 後, 新增的 user account 會消失
+	2 )	19604	nor P3	VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0') 
+	3 )	19153	nor P3	The feature of exposure will works incorrect after specific steps  
+	4 )	19152	nor P3	In schedule mode, AWB will works incorrect if enable fix current value  
+	5 )	19923	nor P3	Restore camera 導致 stream2 Frame size 與 SPEC 不符
+	6 ) 25061	nor P4	Browser特定大小下到Local storage page view file，按primary後Close再按view會沒有作用
+	
+6. Bugs unfixed:
+	1 ) 24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	2 ) 24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	3 ) 16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	4 ) 24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile    
+	5 ) 24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	6 ) 25072	sug P3	建議 ePTZ zoom time factor 最大值與 SPEC 相符
+	7 ) 25067	sug P3	建議改善 Format SD card 後 VADP 數量遞減狀況
+	8 ) 24757	unc P3	測試期間發生過image頁面的設定會變空值
+	9 ) 24738	nor P4	使用Safari browser，需輸入3次帳密才可登入
+	10) 18985	nor P4	The UI of Auto Focus is incorrect after specific steps
+	11) 24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	12) 25064	nor P4	特殊設定使得 Resize button 看起來行為異常	
+	13) 25059	nor P4	特定的設定會導致Home Page的Snapshot/Digital zoom/Full Screen功能失效
+	14) 18934	min P4	Window names in Event page are incorrect when window name with "%"
+	15) 18923	min P4	Exclusive window will become gray after specific steps
+	16) 17723	min P4	video page中的save buttom有時會無法存取成功
+	17) 24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	18) 24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	19) 25049	sug P4	建議定義 Home Page talk 靜音 button
+	20) 16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+   <None>
+   
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200c>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200c>
+File: <FD8372-VVTK-0200c.flash.pkg>
+Start Date: <2013/07/17>
+Release Date: <2013/07/26>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200c>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200c>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.87>	*  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.104> *
+VNDPWrapper:                    <1.0.0.68>  *
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.85.0>	* 
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.2> 
+RTSP Server Module Version:	<2.5.4.3>	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+stormgr:   			<1.0.6.2>  
+ONVIFD_VERSION:			<1.7.1.1> 
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.19> *
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,104 * 
+FF_VER:           1,0,0,87  *  
+VNDPWRAPPER_VER:  1,0,0,68  *   
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:
+	1) Update Plugin to v1.0.0.104
+	2) Update remotefocusd to v1.0.0.19
+	3) Video mode capability update, change capabilty_videoin_c0_codec_maxframerate with respect to comsfreq, add parameter capability_videoin_streamcode
+	
+3. Libraries change:
+    1) Update Imgproc to v 1.0.0.85 (fix RGAIN BGAIN value may overflow when the test environment is under extreme condition)
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)	24887	maj	P2	MPEG-4條件下，Camera接入Genetec系統FPS會自動強制改成13FPS (Follow video mode spec)
+
+5. Bugs fixed:
+	
+	1 )	24886	maj	P2	Genetec系統中，當影像格式為MJPEG時，無法操作Image quality這項功能
+	2 )	24953	maj	P2	Image Setting profile 功能無法使用
+	3 )	24650	nor P3	使用IPv6連線，觀看streaming，UDP/TCP protocol會自動轉換成HTTP (Plugin問題)
+	4 )	24913	nor	P3	Format SD card 清除 SD 中 VADP 後，無法上傳 VADP 檔
+	5 )	24690	nor P4	切換到有plugin畫面的時候，都會彈跳出Warning的視窗
+	
+6. Bugs unfixed:
+	1 )	24709	nor P3	長時間 reboot 情況下，有機率發生無法正常開機
+	2 )	24755	nor P3	NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	3 )	19923	nor P3	Restore camera 導致 stream2 Frame size 與 SPEC 不符
+	4 )	19604	nor P3	VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0') (已解)
+	5 )	19153	nor P3	The feature of exposure will works incorrect after specific steps  (common bug 已解)
+	6 )	19152	nor P3	In schedule mode, AWB will works incorrect if enable fix current value  (common bug 已解)
+	7 )	16766	nor P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution	
+	8 )	24954	nor	P3	特殊的步驟會導致使用者按下Exposure profile卻連線到Image Setting profile    
+	9 )	24737	min P3	用Safari browser 播放stream，畫面會超出邊框
+	10)	24757	unc P3	測試期間發生過image頁面的設定會變空值
+	11)	24738	nor P4	使用Safari browser，需輸入3次帳密才可登入
+	12)	18985	nor P4	The UI of Auto Focus is incorrect after specific steps
+	13)	24979	nor	P4	調整Event Priority，會造成Event觸發重新計算
+	14)	24914	nor	P4	預設值條件下，Gamma curve顯示的資訊不正確
+	15)	24651	min P4	Video text的中文會消失
+	16)	18934	min P4	Window names in Event page are incorrect when window name with "%"
+	17)	18923	min P4	Exclusive window will become gray after specific steps
+	18)	17723	min P4	video page中的save buttom有時會無法存取成功
+	19)	24782	sug P4	建議Home page 的 Global view 的字體size可以變小
+	20)	24653	sug P4	建議連續click 2次可以使full screen mode回到一般畫面
+	21)	16734	nor P5	當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+   <None>
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200b>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200b>
+File: <FD8372-VVTK-0200b.flash.pkg>
+Start Date: <2013/06/27>
+Release Date: <2013/07/16>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200b>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200b>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.86>  (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.101>
+VNDPWrapper:                    <1.0.0.66>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.22> 
+MT9P006 library version:        <2.0.26.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.83.0> *
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.2> 
+RTSP Server Module Version:	<2.5.4.3>	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+stormgr:   			<1.0.6.2>  
+ONVIFD_VERSION:			<1.7.1.1> 
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> 
+ONVIFEVENTD_VERSION:		<1.1.0.9> 
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.10>   
+boa version:			<1.32.1.1>	 
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> 
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,101  
+FF_VER:           1,0,0,86    
+VNDPWRAPPER_VER:  1,0,0,66    
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+	
+2. Changed features:
+	1) Change video mode capabilty, adding videoin_c0_mode to control FOV (crop_size), originally is capability_videoin_c0_mode. Now capability_videoin_c0_mode is just a parameter to show the current mode status
+	    
+3. Libraries change:
+    ImgProc general library  update to	v1.0.83.0
+    
+4. Known bugs and issues
+	1)  16900	nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766	nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+	1 )	24689	maj P2 Adaptive recording must support Audio detection
+	2 )	24762	maj P3 Genetec系統中video code為MJPEG且調整image quality=0後,發現影像無任何差異
+	3 )	24713	maj P3 DDNS-dhs, tzo can not update successfully(DDNS頁面應移除DHS和TZO)
+	4 )	24686	nor P3 VADP Page 未翻譯
+	5 )	24757	nor P3 測試期間發生過image頁面的設定會變空值
+	6 )	24756	nor P3 特殊的方式使用Gamma curve，會讓default值顯示不正確	
+	7 )	24711	nor P3 在PTZ的頁面中使用滑鼠滾輪時, zoom factor的功能會失效
+	8 )	24710	nor P3 The Current status of DI is inconsistent when switch DI Normal status on FW
+	9 )	24652	nor P3 當fps設定為Customized時，I-frame會自動變成1/4S
+	10)	24569	nor P3 System time/Time zone 的下拉式選單中，部分時區字串未翻譯
+	11)	24685	min P3 VADP頁面的storage_size字串未翻譯
+	12)	24688	nor P4 motion_profile中的沒有設定schedule_mode時，應該將此部份隱藏
+	13)	24687	nor P4 將上傳至SD卡的vadp的檔案，直接format SD 卡後Module list會未被清空內容
+	14)	18985	nor P4 The UI of Auto Focus is incorrect after specific steps
+6. Bugs unfixed:
+	1 )	24709	nor P3 長時間 reboot 情況下，有機率發生無法正常開機
+	2 )	24650	nor P3 使用IPv6連線，觀看streaming，UDP/TCP protocol會自動轉換成HTTP (Plugin問題)
+	3 )	24755	nor P3 NTSC/PAL切換時,在PAL模式下會看到畫面閃動的情形
+	4 )	19923	nor P3 Restore camera 導致 stream2 Frame size 與 SPEC 不符
+	5 )	19604	nor P3 VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0')
+	6 )	19153	nor P3 The feature of exposure will works incorrect after specific steps
+	7 )	19152	nor P3 In schedule mode, AWB will works incorrect if enable fix current value
+	8 )	16766	nor P3 Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	9 )	24737	min P3 用Safari browser 播放stream，畫面會超出邊框
+	10)	24738	nor P4 使用Safari browser，需輸入3次帳密才可登入
+	11)	24690	nor P4 切換到有plugin畫面的時候，都會彈跳出Warning的視窗
+	12)	24651	min P4 Video text的中文會消失
+	13)	18934	min P4 Window names in Event page are incorrect when window name with "%"
+	14)	18923	min P4 Exclusive window will become gray after specific steps
+	15)	17723	min P4 video page中的save buttom有時會無法存取成功
+	16)	24782	sug P4 建議Home page 的 Global view 的字體size可以變小
+	17)	24653	sug P4 建議連續click 2次可以使full screen mode回到一般畫面
+	18)	16734	nor P5 當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+    1) 0200a未測 bug #20491、#21075，煩請協助確認是否會再發生!
+	2) 原本Video mode 是設計videoin_c0_cropsize<=>capabiltiy_videoin_c0_mode做切換連動，後來改成videoin_c0_cropsize<=>videoin_c0_mode的連動，原本的capability_videoin_c0_mode只用來getparam得知現在的mode狀態
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0200a>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0200a>
+File: <FD8372-VVTK-0200a.flash.pkg>
+Start Date: <2013/05/03>
+Release Date: <2013/06/26>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0200a>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0200a>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.86>* (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.101>*
+VNDPWrapper:                    <1.0.0.66>*
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-312, 314-325,327,330-333,335-338,340,343-345,348-351,354,356-361,364-367,370-372>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn135728 *
+
+# Libraries version
+shmem library version:		<1.0.2.14>	   
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.22> *
+MT9P006 library version:        <2.0.26.0> *
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.76.0> *
+virtualsensor version:		<1.0.0.12> 
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.2.2> *
+RTSP Server Module Version:	<2.5.4.3>	*
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+stormgr:   			<1.0.6.2>  * 
+ONVIFD_VERSION:			<1.7.1.1> *
+ONVIFDISCOVERY_VERSION:		<1.1.0.2> *
+ONVIFEVENTD_VERSION:		<1.1.0.9> *
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.10>   *
+boa version:			<1.32.1.1>	 *
+http client version:		<1.6.0.3> 
+chronos version:		<1.1.0.31> *
+sipua version:			<1.0.0.11> 
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.5>  *
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,101 *  
+FF_VER:           1,0,0,86 *   
+VNDPWRAPPER_VER:  1,0,0,66 *   
+
+-----------------------------------------------------------------------
+1. New features:
+
+	1 ) SD Recording 1HR
+	2 ) Support IE9
+	3 ) Fastboot 
+	4 ) New text on video
+	5 ) Smart IR
+	6 ) Advanced Motion Detection
+	7 ) Video mode capability
+	8 ) VADP Open Platform 
+    9 ) 2-way audio full duplex 
+    10) Audio detection  	
+
+   
+2. Changed features:
+	1) ONVIF module upgrade (Test tool 12.12)
+	2) Joystick function ability adjusting
+	3) Remove supporting 3DI in ir cut control
+	4) Change all profile page from pop-out window to inner page
+	5) The default mode option changes from basci mode to advanced mode
+   
+3. Libraries change:
+    message library version: update to	v1.0.1.22
+    MT9P006 library version  update to	v2.0.26.0
+    ImgProc general library  update to	v1.0.76.0
+    
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+    1)  24354  nor  P3  登入時，需要輸入帳密三次才可登入			
+    2)  20491  maj  P3  5M的機種設定為50HZ、shutter speed 1/100，影像有機率出現雜訊
+	3)  21075  maj  P3  在高色溫環境下,自動白平衡的行為不正確
+6. Bugs unfixed:
+	1)  19152  nor  P3  In schedule mode, AWB will works incorrect if enable fix current value
+	2)  19604  nor  P3  VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0')
+	3)  19923  nor  P3  Restore camera 導致 stream2 Frame size 與 SPEC 不符
+
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   Open Platform
+
+9. Test scope:
+   Regression test
+
+10. Note:
+####################################################################################################
+Name: <FD8372-VVTK firmware 0102b>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0102b>
+File: <FD8372-VVTK-0102b.flash.pkg>
+Start Date: <2013/06/04>
+Release Date: <2013/06/10>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0102b>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0102b>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.81> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.81>
+VNDPWrapper:                    <1.0.0.54>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-310,317,323,327,330-331,337,340,343-344,349>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn110332
+
+# Libraries version
+shmem library version:		<1.0.2.14>	
+Mp4VEnc library version:	<2.1.0.4>	
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.21> 
+MT9P006 library version:        <2.0.23.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.58.0> 
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:	   <1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.7> 
+RTSP Server Module Version:	<2.5.3.6>	
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.24> 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.7>  
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.7>   
+boa version:			<1.32.0.20>	
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,81   
+FF_VER:           1,0,0,81   
+VNDPWRAPPER_VER:  1,0,0,54   
+
+-----------------------------------------------------------------------
+1. New features:
+	<None>
+
+2. Changed features:
+	<None>
+   
+3. Libraries change:
+	<None>
+    
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+   	1)  24268  maj  P3  切換FOV的時候會遇到畫面破圖的現象 
+	2)	24270  nor  P3  在Genetec系統中操作FOV機種，Camera的FPS的值會被Genetec強制改成30 
+	3)  19151  nor  P3  Custom window will works incorrect if set up custom window before Flip & Mirror
+	4)	Common bug 327 : Phy issue - network cannot work during the power on/off testing http://rd1-1/redmine/issues/5306
+			
+6. Bugs unfixed:
+	1)  19151  nor  P3  Custom window will works incorrect if set up custom window before Flip & Mirror
+	2)  19152  nor  P3  In schedule mode, AWB will works incorrect if enable fix current value
+	3)  19604  nor  P3  VAST/MD8401無法偵測到IR的資訊.(Parameter 顯示capability_nir='0')
+	4)  19923  nor  P3  Restore camera 導致 stream2 Frame size 與 SPEC 不符
+	5)  20491  maj  P3  5M的機種設定為50HZ、shutter speed 1/100，影像有機率出現雜訊
+	6)  21075  maj  P3  在高色溫環境下,自動白平衡的行為不正確
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0102a>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0102a>
+File: <FD8372-VVTK-0102a.flash.pkg>
+Start Date: <2013/03/25>
+Release Date: <2013/04/15>
+Author: <Leslie Hsu>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0102a>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0102a>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.81> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.81>
+VNDPWrapper:                    <1.0.0.54>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-310,317,323,330-331,337,340,343-344,349>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn110332
+
+# Libraries version
+shmem library version:		<1.0.2.14>	[M]
+Mp4VEnc library version:	<2.1.0.4>	[M]
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.21> 
+MT9P006 library version:        <2.0.23.0> 
+ISP library version:		<2.2.0.57> 
+ImgProc general library:	<1.0.58.0> 
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.7> [M]
+RTSP Server Module Version:	<2.5.3.6>	[M]
+LED module version:		<2.0.0.5>	
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.24> 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.7>  
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.7> [M]   
+boa version:			<1.32.0.20>	[M]
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,81   
+FF_VER:           1,0,0,81   
+VNDPWRAPPER_VER:  1,0,0,54   
+
+-----------------------------------------------------------------------
+1. New features:
+   1) Genetec Certification 
+
+2. Changed features:
+   1) Update Streaming Server App to 1.3.1.7
+   2) Update RTSP Server Module to 2.5.3.6
+   3) Update venc to 1.0.9.7
+   4) Update boa to 1.32.0.20
+   5) Patrol and ePTZ action model modification (http://rd1-1/redmine/issues/5748)
+   6) Focus window function completeness
+   7) Robust format SD card feature function completeness
+   8) default value modification in capability nir and pre/post adaptive recording length
+
+3. Libraries change:
+	1) update shmem Library to 1.0.2.14
+	2) update Mp4VEnc Library to 2.1.0.4
+    
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+   	1)  Memory leak in gpio driver (http://rd1-1/redmine/issues/5148)
+	2)	encrypt_base64 can't decode multiple base64-encoded messages together (http://rd1-1/redmine/issues/5216)
+	3)	Timestamps rollback - case 3 (http://rd1-1/redmine/issues/6327)
+	4)	Snapshots can't be generated every one second exactly (http://rd1-1/redmine/issues/8112)
+	5)	19692	normal		P3	patrol的行為模式不正確 (http://rd1-1/redmine/issues/5734)
+	6)	20112	normal		P3	當Media中的Video clip有命名File name prefix時，會導致在Local storage頁面所下載的video clip無法正常播放
+	7)	21863	normal		P3	當Media中的Snapshot命名為File name prefix時，會導致在Local storage頁面下載JPEGs to AVI無法正常播放
+	8)	20451	normal		P3	The setting of Contrast will breakdown after select several times 
+	9)  19979   normal      P3  Network fail的功能在Netowrk type為PPPoE時無法即時作用
+	
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17723  min	P4	video page中的save buttom有時會無法存取成功
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0101a2> (sample firmware)
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0101a2>
+File: <FD8372-VVTK-0101a2.flash.pkg>
+Start Date: <2013/01/16>
+Release Date: <2013/01/16>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0101a2>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0101a2>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.81> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.81>
+VNDPWrapper:                    <1.0.0.54>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-310>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn110332
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.21> 
+MT9P006 library version:        <2.0.23.0> [M] 
+ISP library version:		<2.2.0.57> [M]
+ImgProc general library:	<1.0.58.0> [M]
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.2>   
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.24> 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.7>  
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.0>   
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,81   
+FF_VER:           1,0,0,81   
+VNDPWRAPPER_VER:  1,0,0,54   
+
+-----------------------------------------------------------------------
+1. New features:
+   <None>
+
+2. Changed features:
+   <None>
+
+3. Libraries change:
+	1) update MT9P006 Library v2.0.23.0
+	2) update Imgproc Library v1.0.58.0
+	3) update ISP Library v2.2.0.57
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+   	1)  P3 客戶反應IP8162及FD8372戶外的AWB不準 (http://rd1-1/redmine/issues/6487)
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17723  min	P4	video page中的save buttom有時會無法存取成功
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0101a1> (sample firmware)
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0101a1>
+File: <FD8372-VVTK-0101a1.flash.pkg>
+Start Date: <2012/11/14>
+Release Date: <2012/11/14>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0101a1>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0101a1>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.81> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.81>
+VNDPWrapper:                    <1.0.0.54>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-310>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn110332
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.21> 
+MT9P006 library version:        <2.0.21.0> [M] 
+ISP library version:		<2.2.0.48> 
+ImgProc general library:	<1.0.36.0> 
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.2>   
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.0.2.1>  
+ectun version:			<1.0.2.0> 
+configer_II version:		<2.0.2.2>   
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.24> 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.7>  
+Remotefocus version             <1.0.0.18>
+
+# Modules version
+venc version:			<1.0.9.0>   
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.5>   
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14>   
+
+PLUGIN_VER:       1,0,0,81   
+FF_VER:           1,0,0,81   
+VNDPWRAPPER_VER:  1,0,0,54   
+
+-----------------------------------------------------------------------
+1. New features:
+   <None>
+
+2. Changed features:
+   1) Support Remote focus control for 1 step
+
+3. Libraries change:
+	1) update MT9P006 Library v2.0.21.0
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+   	1)  P2 畫面有時會出現異狀 (http://rd1-1/redmine/issues/5850)
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17723  min	P4	video page中的save buttom有時會無法存取成功
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0101a>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0101a>
+File: <FD8372-VVTK-0101a.flash.pkg>
+DCR No: 2012-07-13-033386
+Start Date: <2012/08/07>
+Release Date: <2012/08/09>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0101a>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0101a>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.81> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.81>
+VNDPWrapper:                    <1.0.0.54>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-289, 291, 294-299, 301-302, 304-305, 307-310>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	U-Boot 1.3.4-svn110332 [M]
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.11>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.21> [M]
+MT9P006 library version:        <2.0.18.0> [M] 
+ISP library version:		<2.2.0.48> [M]
+ImgProc general library:	<1.0.36.0> [M]
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.2> [M]  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.0.2.1> [M] 
+ectun version:			<1.0.2.0> [M]
+configer_II version:		<2.0.2.2> [M]  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.24> [M]
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.7>  [M]
+Remotefocus version             <1.0.0.17>[M]
+
+# Modules version
+venc version:			<1.0.8.2>   [M]
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.5> [M]  
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.14> [M]  
+
+PLUGIN_VER:       1,0,0,81   [M]
+FF_VER:           1,0,0,81   [M]
+VNDPWRAPPER_VER:  1,0,0,54   [M]
+
+-----------------------------------------------------------------------
+1. New features:
+   	1) Support flexible bitrate control
+	2) Support ePTZ support zoom 12X 
+	3) Recipient mail address support multiple mail address
+	4) Firefox支援的程度 (Quicktime 播放streaming)
+	5) Focus 實體button支援按下去會執行remote focus動作
+	   	
+	   auto focus will be triggered if the AF button is pressed for over 0 seconds,
+	   focus scan will be triggered if the AF button is pressed for over 2 seconds
+	6) Add new parameters in capability group
+	
+
+2. Changed features:
+   	1) Change MJPEG default bitrate
+
+	   2560x1920(5M): 6Mbps -> 16Mbps
+	   2048x1536(3M): 6Mbps -> 12Mbps
+	   176x144(Mobile): 40Kbps -> 128Kbps	   
+	   1600x1200 (2M) : 6Mbps -> 12Mbps
+	   1920x1080 (1080P) : 6Mbps -> 12Mbps
+	   1280x720 (720P) : 6Mbps -> 10Mbps
+
+	2) change wdrc default value from enable to disable (SPEC Change!!)
+	3) Add positioning function in Full-range scan and restore
+	4) When WDRC enable, contrast setting in UI must to be greyed
+	5) Disable ARR function	
+	6) Mirror & Flip supported by SOC 
+	7) update RTSP to 2.5.3.2
+	8) update PTZ to 1.0.2.1
+	9) update ectun to 1.0.2.0
+	10) update configerII to 2.0.2.2
+	11)update venc to 1.0.8.2
+	12)update iod to 3.0.7.5
+	13)update ircutctrl to 1.0.0.14
+	14)update onvif to 1.6.0.24 
+	15)update onvif_eventd to 1.1.0.7 
+	16)update remotefocus to 1.0.0.17
+	17)update plug-in to 1.0.0.81
+	18)sync common bug #287-289, #291, #294-299, #301-302, #304-305, #307-310
+	
+3. Libraries change:
+	1) update Imgproc Library v1.0.36.0
+	2) update ISP Library v2.2.48.0
+	3) update MT9P006 Library v2.0.18.0
+	4) update message Library v1.0.1.21
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	
+
+5. Bugs fixed:
+   	1)  在sensor mirror的情形下, 低照noise表現會較mirror前不一致 
+	2)  Enable WDRC, 調整影像參數 or 執行remotefocus過程中, 影像有機會出現黑色區塊現象
+	3)  Sensor 白點問題
+	4)  remotefocus defocus issue
+	5)  Outdoor mode、exposure level +2.0時，有機會出現hunting現象
+	6)  The recorder will fail when enable two recordings and three events to SD card or NAS 
+	7)  使用IPv6連線，觀看streaming，UDP/HTTP protocol會自動轉換成HTTP
+	8)  capability_ptzenabled參數回傳值有誤
+	9)  於Video title、PTZ Preset Locations裡打中文會出現亂碼
+	10) 將Frame size設為176x1920，首頁snapshot size不正確
+	11) Event Media剩餘記憶體計算不正確，出現負數
+	12) Privacy mask name含%字元，會導致無法正確儲存
+	13) 第一次enable IPv6後information不齊全，需要reboot後才齊全
+	14) The MP4 clip made by Rec button cannot play if it records from a long time
+	15) 特殊情況下Network fail 錄影到SD卡無作用
+	16) 畫面的上方會有白色線條
+	17) MPEG-4、JPEG的Customized字串不正確
+	18) The exclusive window should not show blue color after click save button
+	19) ethernet can not work
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17723  min	P4	video page中的save buttom有時會無法存取成功
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+
+####################################################################################################
+Name: <FD8372-VVTK firmware 0100g>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100g>
+File: <FD8372-VVTK-0100g.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/05/02>
+Release Date: <2012/05/05>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100g>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100g>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.67> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.67>
+VNDPWrapper:                    <1.0.0.45>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-286>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.11> [M]
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.12.0> [M]
+ISP library version:		<2.2.0.46> [M]
+ImgProc general library:	<1.0.26.0> [M]
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.22>  
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.6>  
+
+# Modules version
+venc version:			<1.0.6.5>   [M]
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.4>  
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.12>  
+
+PLUGIN_VER:       1,0,0,67   
+FF_VER:           1,0,0,67   
+VNDPWRAPPER_VER:  1,0,0,45   
+
+-----------------------------------------------------------------------
+1. New features:
+   <None>
+
+2. Changed features:
+   	1) update venc to 1.0.6.5
+	2) update acutil for kernel building on DM36x platform	
+	
+3. Libraries change:
+	1) update Imgproc Library v1.0.25.0
+	2) update ISP Library v2.2.0.46
+	3) update MT9P006 Library v2.0.12.0
+	4) update H264Enc Library v3.0.1.11
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)  16996  ma	P2	同時選取Flip and Mirror儲存後,會造成影像瞬間異常.
+	4)  在sensor mirror的情形下, 低照noise表現會較mirror前不一致
+	5)  Enable WDRC, 調整影像參數 or 執行remotefocus過程中, 影像有機會出現黑色區塊現象
+	5)  Focus 實體button並不支援按下去會執行remote focus動作
+
+5. Bugs fixed:
+   	1)  17604  nor  P3	WDR Enhanced的sensitivity -Low 在Reboot後失效. 
+	2)  高對比環境影像出現鋸齒現象
+	3)  低照環境底下Enable low light compensation有機會失效
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17112  nor	P4	External microphone input gain 設定 21 db會聽到雜音.
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100f>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100f>
+File: <FD8372-VVTK-0100f.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/04/12>
+Release Date: <2012/04/19>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100f>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100f>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.67> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.67>
+VNDPWrapper:                    <1.0.0.45>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-286>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.22>  
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.6>  
+
+# Modules version
+venc version:			<1.0.5.14> 
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.4>  
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.12>  
+
+PLUGIN_VER:       1,0,0,67   
+FF_VER:           1,0,0,67   
+VNDPWRAPPER_VER:  1,0,0,45   
+
+-----------------------------------------------------------------------
+1. New features:
+   <None>
+
+2. Changed features:
+   	1) change the cropping warning message	
+	
+3. Libraries change:
+	1) update Imgproc Library v1.0.25.0
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)  16996  ma	P2	同時選取Flip and Mirror儲存後,會造成影像瞬間異常.
+	4)  WDRC於重開機後,第一次會失效.
+	5)  Focus 實體button並不支援按下去會執行remote focus動作
+	
+5. Bugs fixed:
+   	1)  17237  nor	P3	當執行Full range scan 時,Focus process status bar 沒有顯示顏色.
+	2)  16699  maj	P2	在outdoor環境下調整exposure level會造成影像閃爍.
+	3)  17068  maj	P2	執行"Fully-opened iris" Auto focus時,會有機會對不到焦.
+	4)  17199  nor	P4	特殊步驟後,Image adjustment 的設定會在Preview後被儲存.
+	5)  17219  nor	P4	Joystick can not control preset positions of streaming 2.
+	6)  17308  nor	P4	According to spec,constant bit rate 沒有1.5Mbps.
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17112  nor	P4	External microphone input gain 設定 21 db會聽到雜音.
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100e>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100e>
+File: <FD8372-VVTK-0100e.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/03/28>
+Release Date: <2012/04/06>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100e>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100e>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.67> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.67>
+VNDPWrapper:                    <1.0.0.45>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-286>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.22>  
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.6>  
+
+# Modules version
+venc version:			<1.0.5.14> 
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.4>  
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.12>  
+
+PLUGIN_VER:       1,0,0,67   
+FF_VER:           1,0,0,67   
+VNDPWRAPPER_VER:  1,0,0,45   
+
+-----------------------------------------------------------------------
+1. New features:
+  <None>
+
+2. Changed features:
+   	1) update stormgr to 1.0.5.35
+	2) Select cropping mode will clear the following settings : Viewing window、Motion、Privacy mask、Preset-position、"Exposure window"、"Focus window"
+	
+3. Libraries change:
+	1) Imgproc Library v1.0.23.0
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)  16996  ma	P2	同時選取Flip and Mirror儲存後,會造成影像瞬間異常.
+	
+	
+5. Bugs fixed:
+   	1)  16945  maj	P2	Custom Focus window在某些地方無法被儲存.
+	2)  16699  maj	P2	在outdoor環境下調整exposure level會造成影像閃爍.
+	3)  17068  maj	P2	執行"Fully-opened iris" Auto focus時,會有機會對不到焦.
+	4)  17067  nor  P4  	"刪除憑證" 字串與各國語系未對應(除英文外)  
+	
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 17112  nor	P4	External microphone input gain 設定 21 db會聽到雜音.
+
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100d>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100d>
+File: <FD8372-VVTK-0100d.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/03/16>
+Release Date: <2012/03/26>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100d>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100d>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.67> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.67>
+VNDPWrapper:                    <1.0.0.45>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-273>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.22> [M] 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.6>  [M]
+
+# Modules version
+venc version:			<1.0.5.14> 
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.4>  [M]
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.12>  
+
+PLUGIN_VER:       1,0,0,67   [M]
+FF_VER:           1,0,0,67   [M]
+VNDPWRAPPER_VER:  1,0,0,45   [M]
+
+-----------------------------------------------------------------------
+1. New features:
+  <None>
+
+2. Changed features:
+   	1) update iod to 3.0.7.4
+	2) update onvifmessage to 1.6.0.22
+	3) update onvifeventd to 1.1.0.6
+	4) update plug-in to 1.0.0.67
+	
+	
+3. Libraries change:
+   	1) MT9P006 Sensor Library v2.0.10.0
+	2) Imgproc Library v1.0.22.0
+
+4. Known bugs and issues
+	1)  16900  nor	P3	在Milestone選擇JPEG且2560x1920影像不正確.(測試Onvif test tool 中測試MJPG一樣會有問題) 
+	2)  16766  nor	P3	Milestone選擇MPEG-4，不應出現1920x1920以上的Resolution
+	3)  16996  ma	P2	同時選取Flip and Mirror儲存後,會造成影像瞬間異常.
+	
+	
+5. Bugs fixed:
+   	1)  16741	major	P3	Event trigger時的video clip檔案未達到maximum duration or Maximum file size兩者其中之一.(video 設定constant bit rate)
+	2)  16682	major	P2	Perform Auto focus 無法對到最清楚的對焦點.
+	3)  16392	normal	P3	無論設定 Synchronize with digital input 1/2/3 trigger IR cut filter都只有DI 1 有效觸發.
+	4)  16977	normal	P3	The range of customize target bit rate should be [4~26000]
+	5)  16911	major	P2	切換FOV後,設定的Cropping settings 與Viewing window看到的影像不同.
+	6)  16913	major	P2	調整Exposure page的設定時,會導致已連線的影像有晃動的現象.
+	7)  16765	normal	P3	將Frame size設為320x180，首頁snapshot size不正確
+	8)  16699  	major	P2	在outdoor環境下調整exposure level會造成影像閃爍.
+	9)  16743  	major	P2	當WDR Enhanced設定High sensitive時,畫面會一直閃爍.
+	
+			
+6. Bugs unfixed:
+	1) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	2) 16945  maj	P2	Custom Focus window在某些地方無法被儲存.
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   <None>
+
+9. Test scope:
+   Regression test
+
+10. Note:
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100c>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100c>
+File: <FD8372-VVTK-0100c.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/03/03>
+Release Date: <2012/03/08>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100c>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100c>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.66> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.66>
+VNDPWrapper:                    <1.0.0.44>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-273>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  
+recorder version:		<1.0.6.9>   
+ONVIFD_VERSION:			<1.6.0.20> [M] 
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.5>  [M]
+
+# Modules version
+venc version:			<1.0.5.14> 
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.2>
+aenc version:			<1.0.3.2>  
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.12>  [M]
+
+PLUGIN_VER:       1,0,0,66  
+FF_VER:           1,0,0,66  
+VNDPWRAPPER_VER:  1,0,0,44  
+
+-----------------------------------------------------------------------
+1. New features:
+  <None>
+
+2. Changed features:
+   	1) update ircutctrl to 1.0.0.12
+	2) update onvifmessage to 1.6.0.20
+	3) update onvifeventd to 1.1.0.5
+	
+	
+3. Libraries change:
+   	1) mtndetect library to 1.0.0.4
+
+4. Known bugs and issues
+	1)  16699  maj	P2	在outdoor環境下調整exposure level會造成影像閃爍.
+	2)  16743  maj	P2	當WDR Enhanced設定High sensitive時,畫面會一直閃爍.	
+	
+5. Bugs fixed:
+   	1)  16657	major	P2	Default settings of Active of Digital Input on event settings page should be checked.
+	2)  16682	major	P2	Perform Auto focus 無法對到最清楚的對焦點.
+	3)  16701	major	P2	重開機前後的對焦點不同.
+	4)  16392	normal	P3	無論設定 Synchronize with digital input 1/2/3 trigger IR cut filter都只有DI 1 有效觸發.
+	5)  16364	major	P2	Trigger time 與event 實際的觸發時間不同
+	6)  16412	normal	P3	Profile 的 Exposure mode選項之一應該為Manual not Fixed.
+	7)  16658	major	P2	Maximum file size of Video clip should be [50~6144].
+	8)  16671	major	P2	Fixed quality選擇Customized的範圍不正確
+	9)  16676	major	P2	The save button of streaming protocol page can not work.
+	10) 16698	major	P2	有時無法順利新增Server, Media.
+	11) 16707	major	P2	Video的FOV無法由720P HD切換至5-Megapixel
+	12) 16733	normal	P2	Save server button 和Close button的位置與spec定義不符.(Recording page /event settings page)
+	13) 16739	major	P2	根據規格 "UDP unicast" protocol 應該改為"UDP Unicast".(U大寫)
+	14) 16740	major	P2	Manual trigger 2/3 does not support "nstate (Duration)" url command.
+	15) 16751	major	P2	Save event and Close button 位置與spec不符.
+	16) 16760	major	P2	NAS server無法mount當密碼為特殊字元(如#)
+	17) 16413	normal	P3	Onvif 1.02.4.3 某些PTZ相關測項Failed
+	18) 16458	normal	P3	Font color of configuration area的顏色選擇視窗顯示異常.
+	19) 16640	major	P3	Automatic repairable recording can not work.
+	20) 16656	normal	P3	Restore default後的第一次連線(Audio is Mute),Info 會顯示Protocol-AV.
+	21) 16677	normal	P3	IPv6的Information 多了一個closed button.
+	22) 16730	normal	P3	根據規格,當upload invalid XML file of custom language file時,顯示的內容有誤.
+	23) 16732	normal	P3	當新增一個已被刪除過的recording entry時,Maximum duration及Maximum file size並不會?預設值而是保留之前的設定值.
+	24) 16765	normal	P3	將Frame size設為320x180，首頁snapshot size不正確  
+	25) 16366  	normal  P3      同時選取Locked 與Unlocked選項後search,只會search到Locked Files.
+	
+			
+6. Bugs unfixed:
+	1) 16741  maj	P3	Event trigger時的video clip檔案未達到maximum duration or Maximum file size兩者其中之一.(video 設定constant bit rate)
+	2) 16734  nor	P5      當按下save button後,即使schedule 在Always 的選項下,From to [hh:mm]的欄位卻變成可設定的狀態.
+	
+7. Unfixed stable common bugs:
+   <None>
+
+8. Untranslated string:
+   	1) method               @HTTPS
+	2) zoom_factor_display  @PTZ
+	3) show_timestamp_and_video_title_in_video_and_snapshots   @Image/General setting
+
+9. Test scope:
+   	Regression test
+
+10. Note:
+
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100b>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100b>
+File: <FD8372-VVTK-0100b.flash.pkg>
+DCR No: <N/A>
+Start Date: <2012/02/01>
+Release Date: <2012/02/16>
+Author: <Kelly Kuo>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100b>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100b>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.66> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.66>
+VNDPWrapper:                    <1.0.0.44>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-268, 270>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.11> [M]
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.3.0>  [M]
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.2.1>  [M]
+recorder version:		<1.0.6.9>  [M] 
+ONVIFD_VERSION:			<1.6.0.19> [M]
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.4>  [M]
+
+# Modules version
+venc version:			<1.0.5.14> [M]
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.2>
+aenc version:			<1.0.3.2>  [M]
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.11>
+
+PLUGIN_VER:       1,0,0,66  [M]
+FF_VER:           1,0,0,66  [M]
+VNDPWRAPPER_VER:  1,0,0,44  [M]
+
+-----------------------------------------------------------------------
+1. New features:
+  <None>
+
+2. Changed features:
+   	1) Fix Common bug #270
+	2) update onvif
+	3) update rtsp
+	4) update recorder
+	5) update venc
+	6) update shmem
+	7) update configer.II
+	8) support Digital High Pass Filter in anec
+	
+3. Libraries change:
+   	1) MT9P006 Sensor Library v2.0.7.0
+	2) ISP Library v2.2.0.44
+	3) Imgproc Library v1.0.21.0
+	
+4. Bugs fixed:
+   	1)  16362  maj  P2     INVA  Streaming 1不應該有Mpeg-4 codec選項(For 5M)  
+   	2)  16364  maj  P2     Trigger time 與event 實際的觸發時間不同  
+	3)  16386  nor  P3     首頁的特定警告視窗會一次跳出兩個相同訊息.  
+	4)  16388  nor  P3     FIXE  Focus window的框架無法顯示完全.  
+	5)  16389  nor  P3     Media of snapshot and clip 的source 有4個stream 可以選擇(此機種只有3個stream)  
+	6)  16390  nor  P3     Recording 的source有4個stream 可以選擇(此機種只有3個stream)  
+	7)  16391  nor  P2     FIXE  Maximum duration and Maximum file size 與spec不符.    
+	8)  16399  nor  P3     Digital Input 3 can not trigger adaptive recording.  
+	9)  16412  nor  P3     Profile 的 Exposure mode選項之一應該為Manual not Fixed.  
+	10) 16413  nor  P3     Onvif 1.02.4.3 某些PTZ相關測項Failed  
+	11) 16414  nor  P3     根據規格 ,Outdoor 機種 default Mute 應該要checked.  
+	12) 16424  nor  P3     INVA  DI Normal status 定義與spec不符.  
+	13) 16430  nor  P3     PTZ page 與SPEC_1.1.1 PP_PTZ settings P7 2.5.1不符.  
+	14) 16441  nor  P3     Focus 頁面與spec MI_Image_MD8372 不符 (沒有此頁面規格)  
+	15) 16442  nor  P3     根據規格, flip and mirror are checked by default.  
+	16) 16444  cri  P2     設定為HTTPS only再做某些設定後，會導致網頁掛掉  
+	17) 16445  nor  P3     HTTPS頁面中有些字串敘述錯誤  
+	18) 16446  nor  P3     HTTPS頁面中Method的Create self-signed certificate automatically字串有被截掉  
+	19) 16448  nor  P3     WDR Enhanced的sensitivity在Reboot後失效.  
+	20) 16458  nor  P3     Font color of configuration area的顏色選擇視窗顯示異常.  
+	21) 16526  nor  P3     Preview Custom measurement window,measurement window會被儲存.  
+	22) 16531  nor  P3     Change and preview Iris mode後按下restore會直接被儲存.  
+	23) 16532  nor  P3     切換Iris mode to Outdoor ,Preview沒有作用.(非Profile )  
+	24) 16534  nor  P3     Check Turn on IR illuminator in the night mode 沒有跳出警告訊息.  
+
+			
+5. Bugs unfixed:
+   	1) 16392  nor  P3     無論設定 Synchronize with digital input 1/2/3 trigger IR cut filter都只有DI 1 有效觸發.
+	2) 16366  nor  P3     同時選取Locked 與Unlocked選項後search,只會search到Locked Files.
+
+6. Unfixed stable common bugs:
+   <None>
+
+7. Untranslated string:
+   	1) method               @HTTPS
+	2) zoom_factor_display  @PTZ
+	3) show_timestamp_and_video_title_in_video_and_snapshots   @Image/General setting
+
+8. Test scope:
+   	Regression test
+
+9. Note:
+   
+
+
+#######################################################################
+Name: <FD8372-VVTK firmware 0100a>
+Path: <\\athena\SQA\Project\FD8372\VVTK\Multi_lingual\Application\Firmware\English\0100a>
+File: <FD8372-VVTK-0100a.flash.pkg>
+DCR No: <N/A>
+Start Date: <2011/10/21>
+Release Date: <2012/01/13>
+Author: <Wayne Lin>
+-----------------------------------------------------------------------
+Firmware type:			<General>
+Firmware version:		<FD8372-VVTK-0100a>
+Supported script version:	<0100a>
+Webpage version:		<FD8372-VVTK-0100a>
+Script version:			<0100a>
+New2 Viewer Plugin version:	<N/A>
+NP-Plugin:                      <1.0.0.33> (npVivotekInstallerMgt.xpi/crx)
+IE-Plugin:                      <1.0.0.32>
+VNDPWrapper:                    <1.0.0.20>
+Web page language:		<de,en,es,fr,it,jp,pt,sc,tc>
+Verify major bug fixed:		<1-184, 186-268>
+-----------------------------------------------------------------------
+
+# Uboot version
+Uboot version:	revision 88666
+
+# Libraries version
+shmem library version:		<1.0.2.9>
+Mp4VEnc library version:	<2.1.0.3>
+H264Enc library version:	<3.0.1.10>
+JpegEnc library version:	<1.0.1.2>
+Isom_h264 library version:	<3.6.1.3>
+message library version:	<1.0.1.19>
+MT9P006 library version:        <2.0.5.0>
+ISP library version:		<2.2.0.43>
+ImgProc general library:	<1.0.18.4>
+virtualsensor version:		<1.0.0.12>
+xmlsparser lib version:		<1.1.0.0>
+sessionmgr lib version:		<2.1.0.2>
+
+# Applications version
+DRM version:			<2.0.0.1>
+DDNSC version:			<1.12.0.4>
+UPNPDD version:			<1.0.0.7>
+UPNPIGDCP version:		<1.1.0.18>
+SERVER PUSH version:		<2.2.1.1>
+Streaming Server App Version:	<1.3.1.6>
+RTSP Server Module Version:	<2.5.2.0>
+LED module version:		<2.0.0.5>
+PTZ manager version:		<1.1.0.6> 
+ectun version:			<1.0.1.2>
+configer_II version:		<2.0.1.6>
+recorder version:		<1.0.6.8> 
+ONVIFD_VERSION:			<1.6.0.16>
+ONVIFDISCOVERY_VERSION:		<1.0.0.10>
+ONVIFEVENTD_VERSION:		<1.1.0.3>
+
+# Modules version
+venc version:			<1.0.5.13>
+boa version:			<1.32.0.17>
+http client version:		<1.6.0.3>
+chronos version:		<1.1.0.30>
+sipua version:			<1.0.0.11>
+iod version:			<3.0.7.2>
+aenc version:			<1.0.0.3>
+eventmgr version:		<1.0.2.8>
+swatchdog version:		<1.0.1.0>
+ircutctrl version:		<1.0.0.11>
+
+PLUGIN_VER:       1,0,0,62
+FF_VER:           1,0,0,62
+VNDPWRAPPER_VER:  1,0,0,43
+
+-----------------------------------------------------------------------
+1. New features:
+  <None>
+
+2. Changed features:
+   <None>
+	
+3. Libraries change:
+   <None>
+	
+4. Bugs fixed:
+   <None>
+			
+5. Bugs unfixed:
+   <None>
+
+6. Unfixed stable common bugs:
+   <None>
+
+7. Untranslated string:
+   <None>
+
+8. Test scope:
+   a) Full test
+
+9. Note:
+   a) FOV 切換後 exposure window 有機會失效
+   
+
+#######################################################################
