@@ -25,3 +25,9 @@ for bug in trimmed_bugs_info:
         fixed_bugs += list(range(int(bug_range[0]), int(bug_range[1])+1))
     else:
         fixed_bugs.append(int(bug))
+
+
+# Final Stage  : list all not-fixed common bugs
+full_common_bug = list(range(1, 421))
+print list(set(full_common_bug) - set(fixed_bugs))
+print sorted(list(set(full_common_bug) - set(fixed_bugs)))        
